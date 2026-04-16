@@ -1,0 +1,205 @@
+import { useEffect, useState } from "react";
+import Layout from "../../components/Layout";
+import api from "../../api/api";
+import "./Attendance.css";
+
+function Attendance(){
+
+const [departments,setDepartments] = useState([]);
+const [subjects,setSubjects] = useState([]);
+const [students,setStudents] = useState([]);
+
+const [department,setDepartment] = useState("");
+const [subject,setSubject] = useState("");
+const [date,setDate] = useState("");
+
+const [attendance,setAttendance] = useState([]);
+
+useEffect(()=>{
+
+fetchDepartments();
+fetchSubjects();
+
+},[]);
+
+const fetchDepartments = async()=>{
+
+const res = await api.get("/departments");
+setDepartments(res.data);
+
+};
+
+const fetchSubjects = async()=>{
+
+const res = await api.get("/subjects");
+setSubjects(res.data);
+
+};
+
+const fetchStudents = async()=>{
+
+const res = await api.get("/students");
+setStudents(res.data);
+
+const initial = res.data.map(s=>({
+student_id:s.id,
+status:"Present"
+}));
+
+setAttendance(initial);
+
+};
+
+
+const toggleStatus = (index)=>{
+
+const updated = [...attendance];
+
+updated[index].status =
+updated[index].status === "Present" ? "Absent" : "Present";
+
+setAttendance(updated);
+
+};
+
+
+const saveAttendance = async()=>{
+
+const data = {
+
+class_id:1,
+subject_id:subject,
+faculty_id:1,
+date:date,
+attendance:attendance
+
+};
+
+await api.post("/attendance",data);
+
+alert("Attendance Saved");
+
+};
+
+
+return(
+
+<Layout>
+
+<div className="attendance-page">
+
+<h2>Class Attendance</h2>
+
+<div className="attendance-filters">
+
+<select
+value={department}
+onChange={(e)=>setDepartment(e.target.value)}
+>
+
+<option value="">Select Department</option>
+
+{departments.map(d=>(
+<option key={d.id} value={d.id}>
+{d.name}
+</option>
+))}
+
+</select>
+
+
+<select
+value={subject}
+onChange={(e)=>setSubject(e.target.value)}
+>
+
+<option value="">Select Subject</option>
+
+{subjects.map(s=>(
+<option key={s.id} value={s.id}>
+{s.name}
+</option>
+))}
+
+</select>
+
+
+<input
+type="date"
+value={date}
+onChange={(e)=>setDate(e.target.value)}
+/>
+
+
+<button onClick={fetchStudents}>
+Load Students
+</button>
+
+</div>
+
+
+<table className="attendance-table">
+
+<thead>
+
+<tr>
+
+<th>Student Name</th>
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{students.map((s,index)=>(
+
+<tr key={s.id}>
+
+<td>{s.name}</td>
+
+<td>
+
+<button
+className={
+attendance[index]?.status === "Present"
+? "present"
+: "absent"
+}
+onClick={()=>toggleStatus(index)}
+>
+
+{attendance[index]?.status}
+
+</button>
+
+</td>
+
+</tr>
+
+))}
+
+</tbody>
+
+</table>
+
+
+<button
+className="save-btn"
+onClick={saveAttendance}
+>
+
+Save Attendance
+
+</button>
+
+</div>
+
+</Layout>
+
+);
+
+}
+
+export default Attendance;

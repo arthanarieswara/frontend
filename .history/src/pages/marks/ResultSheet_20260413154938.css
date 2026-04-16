@@ -1,0 +1,313 @@
+/* ================= PAGE ================= */
+.result-page {
+  padding: 25px;
+  background: #f4f6fb;
+  font-family: "Inter", sans-serif;
+}
+
+/* ================= HEADER ================= */
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+/* ================= BUTTONS ================= */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: white;
+}
+
+.btn.success {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: white;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* ================= FILTER ================= */
+.filter-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.filter-bar select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: white;
+}
+
+/* ================= PDF CONTAINER ================= */
+.pdf-container {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* ================= COLLEGE HEADER ================= */
+.college-block {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* ================= TABLE ================= */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+/* 🔥 PREMIUM TABLE */
+.result-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 6px; /* spacing gives premium look */
+}
+
+/* HEADER */
+.result-table th {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  color: white;
+  padding: 10px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+
+/* CELLS */
+.result-table td {
+  background: #ffffff;
+  padding: 10px;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb; /* 🔥 soft border */
+  transition: 0.2s;
+}
+
+/* NAME ALIGN */
+.result-table .name {
+  text-align: left;
+  font-weight: 500;
+}
+
+/* ROW STRIPING */
+.result-table tbody tr:nth-child(even) td {
+  background: #f8fafc;
+}
+
+/* HOVER */
+.result-table tr:hover td {
+  background: #e0f2fe;
+}
+
+/* ================= MARK COLORS ================= */
+
+/* PASS */
+.pass {
+  color: #16a34a;
+  font-weight: bold;
+  background: #ecfdf5 !important;
+  border: 1px solid #22c55e;
+}
+
+/* FAIL */
+.fail {
+  color: #dc2626;
+  font-weight: bold;
+  background: #fef2f2 !important;
+  border: 1px solid #ef4444;
+}
+
+/* ABSENT */
+.absent {
+  color: #f97316;
+  font-weight: bold;
+  background: #fff7ed !important;
+  border: 1px solid #fb923c;
+}
+
+/* ================= ANALYSIS ================= */
+.analysis-section {
+  margin-top: 20px;
+}
+
+.analysis-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.analysis-table th {
+  border: 1px solid #ddd;
+  background: #f1f5f9;
+  padding: 8px;
+}
+
+.analysis-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+/* ================= PRINT ================= */
+@media print {
+  .filter-bar,
+  .actions {
+    display: none;
+  }
+
+  .pdf-container {
+    box-shadow: none;
+  }
+
+  .result-table {
+    border-spacing: 2px;
+  }
+}
+
+/* ================= ANALYSIS SECTION ================= */
+.analysis-section {
+  margin-top: 25px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* TITLE */
+.analysis-section h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ================= ANALYSIS TABLE ================= */
+.analysis-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 6px;
+}
+
+/* HEADER ROW (SUBJECT NAMES) */
+.analysis-table th {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+/* LABEL COLUMN (Registered, Pass etc) */
+.analysis-table td:first-child {
+  background: #f1f5f9;
+  font-weight: 600;
+  text-align: left;
+  padding-left: 12px;
+  border-radius: 8px;
+}
+
+/* DATA CELLS */
+.analysis-table td {
+  background: #ffffff;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+/* ================= COLOR CODING ================= */
+
+/* PASS ROW */
+.analysis-table tr.pass-row td {
+  background: #ecfdf5;
+  color: #16a34a;
+  font-weight: bold;
+}
+
+/* FAIL ROW */
+.analysis-table tr.fail-row td {
+  background: #fef2f2;
+  color: #dc2626;
+  font-weight: bold;
+}
+
+/* ABSENT ROW */
+.analysis-table tr.absent-row td {
+  background: #fff7ed;
+  color: #f97316;
+  font-weight: bold;
+}
+
+/* PERCENTAGE */
+.analysis-table tr.percent-row td {
+  background: #eff6ff;
+  color: #2563eb;
+  font-weight: bold;
+}
+
+/* ================= FAIL DISTRIBUTION ================= */
+.fail-distribution {
+  margin-top: 20px;
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+/* DISTRIBUTION TABLE */
+.fail-distribution table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 6px;
+}
+
+.fail-distribution th {
+  background: #334155;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.fail-distribution td {
+  background: #f8fafc;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+/* NIL COLUMN HIGHLIGHT */
+.fail-distribution td:last-child {
+  background: #ecfdf5;
+  color: #16a34a;
+  font-weight: bold;
+}
+
+/* ================= HOVER EFFECT ================= */
+.analysis-table tr:hover td,
+.fail-distribution tr:hover td {
+  transform: scale(1.02);
+  transition: 0.2s;
+}

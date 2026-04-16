@@ -1,0 +1,57 @@
+.subject-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.subject-form input,
+.subject-form select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.subject-form button {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.subject-form button:hover {
+  background-color: #084298;
+}
+
+.subject-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.subject-table th,
+.subject-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.subject-table th {
+  background-color: #002fff;
+}
+
+.edit-btn {
+  background-color: orange;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: red;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+}

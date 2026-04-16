@@ -1,0 +1,137 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI",sans-serif;
+}
+
+/* ANIMATED BACKGROUND */
+
+.login-wrapper{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(270deg,#0f4c81,#3a8bfd,#1a6ed8);
+  background-size:600% 600%;
+  animation:gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* LOGIN CARD */
+
+.login-card{
+  width:420px;
+  padding:40px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(15px);
+  box-shadow:0 15px 40px rgba(0,0,0,0.3);
+  text-align:center;
+  color:white;
+}
+
+/* COLLEGE HEADER */
+
+.college-logo{
+  width:70px;
+  margin-bottom:10px;
+}
+
+.college-header h1{
+  font-size:20px;
+  margin-bottom:5px;
+}
+
+.college-header p{
+ font-size:13px;
+  opacity:0.9;
+}
+
+.college-header span{
+  font-size:12px;
+  opacity:0.8;
+}
+
+.college-header{
+  margin-bottom:30px;
+}
+
+/* INPUT GROUP */
+
+.input-group{
+
+  position:relative;
+  margin-bottom:20px;
+}
+
+.input-group input{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:6px;
+  outline:none;
+  font-size:14px;
+}
+
+/* FLOATING LABEL */
+
+.input-group label{
+  position:absolute;
+  left:12px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#000000;
+  font-size:14px;
+  pointer-events:none;
+  transition:0.3s;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label{
+  top:-8px;
+  /* background:white; */
+  padding:0 5px;
+  font-size:15px;
+  color:white;
+}
+
+/* PASSWORD ICON */
+
+.password-group{
+ position:relative;
+}
+
+.eye-icon{
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  cursor:pointer;
+  color:#444;
+}
+
+/* BUTTON */
+
+.login-btn{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:6px;
+  background:white;
+  color:#0f4c81;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:all 0.3s;
+}
+
+.login-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}

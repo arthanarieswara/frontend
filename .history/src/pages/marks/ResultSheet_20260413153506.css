@@ -1,0 +1,255 @@
+/* ================= PAGE ================= */
+.result-page {
+  padding: 25px;
+  background: #f4f6fb;
+  font-family: "Inter", sans-serif;
+}
+
+/* ================= HEADER ================= */
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.result-header h2 {
+  font-weight: 600;
+}
+
+/* ================= BUTTONS ================= */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: white;
+}
+
+.btn.success {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: white;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* ================= FILTER BAR ================= */
+.filter-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.filter-bar select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #f9fafb;
+  transition: 0.2s;
+}
+
+.filter-bar select:focus {
+  border-color: #2563eb;
+  background: white;
+  outline: none;
+}
+
+/* ================= PDF CONTAINER ================= */
+.pdf-container {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+}
+
+/* ================= COLLEGE HEADER ================= */
+.college-block {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.college-block h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.college-block p {
+  margin: 2px 0;
+  font-size: 13px;
+}
+
+.college-block h4 {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* ================= TABLE ================= */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+}
+
+/* TABLE STRUCTURE */
+.result-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 4px; /* 🔥 spacing for premium look */
+}
+
+/* HEADER */
+.result-table th {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  color: white;
+  padding: 12px;
+  font-size: 13px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* CELLS */
+.result-table td {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: center;
+  transition: 0.2s;
+}
+
+/* NAME ALIGN */
+.result-table .name {
+  text-align: left;
+  font-weight: 500;
+}
+
+/* ROW STRIPING */
+.result-table tbody tr:nth-child(even) td {
+  background: #f8fafc;
+}
+
+/* HOVER */
+.result-table tr:hover td {
+  background: #e0f2fe;
+}
+
+/* ================= MARK COLORS ================= */
+
+/* PASS */
+.pass {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  font-weight: 600;
+}
+
+/* FAIL */
+.fail {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  font-weight: 600;
+}
+
+/* ABSENT (light, clean) */
+.absent {
+  background: #fff7ed;
+  color: #f97316;
+  font-weight: 600;
+}
+
+/* ================= ANALYSIS ================= */
+.analysis-section {
+  margin-top: 25px;
+}
+
+.analysis-section h4 {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* ANALYSIS TABLE */
+.analysis-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.analysis-table th {
+  background: #f1f5f9;
+  padding: 10px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.analysis-table td {
+  border: 1px solid #eee;
+  padding: 10px;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* HOVER */
+.analysis-table tr:hover {
+  background: #f9fafb;
+}
+
+/* NIL COLUMN */
+.analysis-table td:last-child {
+  font-weight: bold;
+  color: #2563eb;
+}
+
+/* ================= TOPPER (OPTIONAL) ================= */
+.topper {
+  background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+  color: white;
+}
+
+/* ================= SCROLLBAR ================= */
+.table-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #cbd5f5;
+  border-radius: 10px;
+}
+
+/* ================= PRINT / PDF ================= */
+@media print {
+  .result-page {
+    background: white;
+  }
+
+  .filter-bar,
+  .actions {
+    display: none;
+  }
+
+  .pdf-container {
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .result-table td,
+  .result-table th {
+    font-size: 11px;
+    padding: 6px;
+  }
+}

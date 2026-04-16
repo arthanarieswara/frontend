@@ -1,0 +1,103 @@
+/* PAGE TITLE */
+
+.faculty h2{
+    margin-bottom:20px;
+}
+
+/* FORM SECTION */
+
+.faculty-form{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.faculty-form input,
+.faculty-form select{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    min-width:180px;
+}
+
+/* ADD BUTTON */
+
+.faculty-form button{
+    background:#0f4c81;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:5px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.faculty-form button:hover{
+    background:#08345c;
+}
+
+/* TABLE */
+
+.faculty table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.faculty th{
+    background:#f4f6f9;
+    font-weight:600;
+}
+
+.faculty th,
+.faculty td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+    text-align:left;
+}
+
+/* ACTION BUTTONS */
+
+.edit-btn{
+    background:#28a745;
+    color:white;
+    border:none;
+    padding:6px 10px;
+    border-radius:4px;
+    margin-right:5px;
+    cursor:pointer;
+}
+
+.edit-btn:hover{
+    background:#1e7e34;
+}
+
+.delete-btn{
+    background:#dc3545;
+    color:white;
+    border:none;
+    padding:6px 10px;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+.delete-btn:hover{
+    background:#a71d2a;
+}
+
+/* RESPONSIVE */
+
+@media (max-width:768px){
+
+    .faculty-form{
+        flex-direction:column;
+    }
+
+    .faculty-form input,
+    .faculty-form select{
+        width:100%;
+    }
+
+}

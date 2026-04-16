@@ -1,0 +1,53 @@
+.marks-page {
+  padding: 25px;
+  background: #f5f7fb;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.filters select,
+.filters button {
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.table-wrapper {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.marks-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.marks-table th {
+  background: #1e293b;
+  color: white;
+}
+
+.marks-table td,
+.marks-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.marks-table input {
+  width: 80px;
+  padding: 5px;
+}
+
+.save-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}

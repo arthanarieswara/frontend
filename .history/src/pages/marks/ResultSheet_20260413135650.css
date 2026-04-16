@@ -1,0 +1,65 @@
+.result-page {
+  padding: 20px;
+  background: #f5f7fb;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filters select,
+.filters button {
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.pdf-container {
+  background: white;
+  padding: 20px;
+  border: 2px solid black;
+}
+
+.college-title {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* TABLE */
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.result-table th,
+.result-table td {
+  border: 1px solid black;
+  padding: 4px;
+  text-align: center;
+}
+
+.result-table th {
+  background: #e5e7eb;
+}
+
+.analysis-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.analysis-table th,
+.analysis-table td {
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+}
+
+.analysis-table th {
+  background: #e5e7eb;
+  text-align: left;
+}

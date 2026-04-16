@@ -1,0 +1,21 @@
+.faculty-attendance {
+  padding: 20px;
+}
+
+.top-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.name {
+  width: 200px;
+  font-weight: 500;
+}

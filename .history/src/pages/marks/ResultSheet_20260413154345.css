@@ -1,0 +1,185 @@
+/* ================= PAGE ================= */
+.result-page {
+  padding: 25px;
+  background: #f4f6fb;
+  font-family: "Inter", sans-serif;
+}
+
+/* ================= HEADER ================= */
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+/* ================= BUTTONS ================= */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: white;
+}
+
+.btn.success {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: white;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* ================= FILTER ================= */
+.filter-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.filter-bar select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: white;
+}
+
+/* ================= PDF CONTAINER ================= */
+.pdf-container {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* ================= COLLEGE HEADER ================= */
+.college-block {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* ================= TABLE ================= */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+/* 🔥 PREMIUM TABLE */
+.result-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 6px; /* spacing gives premium look */
+}
+
+/* HEADER */
+.result-table th {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  color: white;
+  padding: 10px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+
+/* CELLS */
+.result-table td {
+  background: #ffffff;
+  padding: 10px;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb; /* 🔥 soft border */
+  transition: 0.2s;
+}
+
+/* NAME ALIGN */
+.result-table .name {
+  text-align: left;
+  font-weight: 500;
+}
+
+/* ROW STRIPING */
+.result-table tbody tr:nth-child(even) td {
+  background: #f8fafc;
+}
+
+/* HOVER */
+.result-table tr:hover td {
+  background: #e0f2fe;
+}
+
+/* ================= MARK COLORS ================= */
+
+/* PASS */
+.pass {
+  color: #16a34a;
+  font-weight: bold;
+  background: #ecfdf5 !important;
+  border: 1px solid #22c55e;
+}
+
+/* FAIL */
+.fail {
+  color: #dc2626;
+  font-weight: bold;
+  background: #fef2f2 !important;
+  border: 1px solid #ef4444;
+}
+
+/* ABSENT */
+.absent {
+  color: #f97316;
+  font-weight: bold;
+  background: #fff7ed !important;
+  border: 1px solid #fb923c;
+}
+
+/* ================= ANALYSIS ================= */
+.analysis-section {
+  margin-top: 20px;
+}
+
+.analysis-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.analysis-table th {
+  border: 1px solid #ddd;
+  background: #f1f5f9;
+  padding: 8px;
+}
+
+.analysis-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+/* ================= PRINT ================= */
+@media print {
+  .filter-bar,
+  .actions {
+    display: none;
+  }
+
+  .pdf-container {
+    box-shadow: none;
+  }
+
+  .result-table {
+    border-spacing: 2px;
+  }
+}

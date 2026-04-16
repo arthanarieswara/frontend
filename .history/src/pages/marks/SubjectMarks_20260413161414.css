@@ -1,0 +1,31 @@
+/* ================= MARK INPUT BASE ================= */
+.mark-input {
+  width: 70px;
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+/* ================= PASS ================= */
+.mark-input.pass {
+  background: #ecfdf5;
+  color: #15803d;        /* ✅ DARK GREEN TEXT */
+  border: 1px solid #22c55e;
+}
+
+/* ================= FAIL ================= */
+.mark-input.fail {
+  background: #fef2f2;
+  color: #b91c1c;        /* ✅ RED TEXT */
+  border: 1px solid #ef4444;
+}
+
+/* ================= ABSENT ================= */
+.mark-input.absent {
+  background: #fff7ed;
+  color: #c2410c;        /* ✅ ORANGE TEXT */
+  border: 1px solid #f97316;
+}

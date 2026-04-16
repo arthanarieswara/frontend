@@ -1,0 +1,70 @@
+.subject-page {
+  padding: 20px;
+}
+
+.filters.modern {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filters select, .filters button {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.export-btn {
+  background: #6c5ce7;
+  color: white;
+}
+
+.analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.card {
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.total { background: #2d3436; }
+.present { background: #00b894; }
+.absent { background: #e17055; }
+.pass { background: #0984e3; }
+.fail { background: #d63031; }
+.avg { background: #6c5ce7; }
+.high { background: #00cec9; }
+.low { background: #fdcb6e; color: black; }
+
+.table-wrapper {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.marks-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.marks-table th, .marks-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.save-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #0984e3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}

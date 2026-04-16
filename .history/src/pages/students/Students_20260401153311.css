@@ -1,0 +1,96 @@
+.students h2{
+    margin-bottom:25px;
+    font-size:24px;
+    color:#0f4c81;
+}
+
+.student-form{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.student-form input,
+.student-form select{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+.student-form button{
+    background:#0f4c81;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.students-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.students-table th{
+    background:#1c65d3;
+}
+
+.students-table th,
+.students-table td{
+    padding:12px;
+    border-bottom:1px solid #eee;
+}
+
+.students-table tbody tr:hover{
+    background:#f9fbfd;
+}
+
+.edit-btn{
+    background:#ffc107;
+    border:none;
+    padding:6px 10px;
+    border-radius:4px;
+    margin-right:6px;
+}
+
+.delete-btn{
+    background:#dc3545;
+    color:white;
+    border:none;
+    padding:6px 10px;
+    border-radius:4px;
+}
+
+.student-filters{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.student-filters input,
+.student-filters select{
+    padding:8px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.pagination{
+    margin-top:20px;
+    display:flex;
+    gap:8px;
+}
+
+.pagination button{
+    padding:6px 10px;
+    border:none;
+    background:#ddd;
+    cursor:pointer;
+}
+
+.pagination .active-page{
+    background:#0f4c81;
+    color:white;
+}

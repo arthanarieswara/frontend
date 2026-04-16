@@ -1,0 +1,103 @@
+/* Page Container */
+.mapping-page {
+  padding: 20px;
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* Title */
+.mapping-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #1e2a38;
+}
+
+/* Form Section */
+.mapping-form {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Select Inputs */
+.mapping-form select {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  min-width: 180px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.mapping-form select:focus {
+  border-color: #007bff;
+}
+
+/* Button */
+.mapping-form button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.mapping-form button:hover {
+  background: #0056b3;
+}
+
+/* Table */
+.mapping-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Table Header */
+.mapping-table thead {
+  background: #1e2a38;
+  color: #fff;
+}
+
+.mapping-table th {
+  padding: 12px;
+  text-align: left;
+  font-size: 14px;
+}
+
+/* Table Rows */
+.mapping-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.mapping-table tr:hover {
+  background: #f9f9f9;
+}
+
+/* Action Button */
+.mapping-table button {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.mapping-table button:hover {
+  background: #b52a37;
+}

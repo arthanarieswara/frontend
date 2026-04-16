@@ -1,0 +1,115 @@
+.result-page {
+  padding: 25px;
+  background: #f5f7fb;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: #2563eb;
+  color: white;
+}
+
+.btn.success {
+  background: #16a34a;
+  color: white;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-bar select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.pdf-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.college-block {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.result-table th {
+  background: #1e293b;
+  color: white;
+  padding: 8px;
+}
+
+.result-table td {
+  border: 1px solid #ddd;
+  padding: 6px;
+  text-align: center;
+}
+
+.name {
+  text-align: left;
+}
+
+.pass {
+  color: green;
+  font-weight: bold;
+}
+
+.fail {
+  color: red;
+  font-weight: bold;
+}
+
+.absent {
+  color: rgb(231, 230, 228);
+  font-weight: bold;
+}
+
+.analysis-section {
+  margin-top: 20px;
+}
+
+.analysis-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.analysis-table th {
+  background: #f1f5f9;
+  padding: 8px;
+}
+
+.analysis-table td {
+  border: 1px solid #ddd;
+  text-align: center;
+}
