@@ -1,0 +1,278 @@
+import { useEffect, useState } from "react";
+import Layout from "../../components/Layout";
+import api from "../../api/api";
+import "./Attendance.css";
+
+function Attendance() {
+  const [departments, setDepartments] = useState([]);
+  const [subjects, setSubjects] = useState([]);
+  const [students, setStudents] = useState([]);
+
+  const [department, setDepartment] = useState("");
+  const [semester, setSemester] = useState("");
+  const [section, setSection] = useState("");
+  const [subject, setSubject] = useState("");
+  const [date, setDate] = useState("");
+  const [period, setPeriod] = useState("");
+  const [wholeDay, setWholeDay] = useState(false); // ✅ NEW
+
+  const [attendance, setAttendance] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  /* ================= INIT ================= */
+  useEffect(() => {
+    fetchDepartments();
+  }, []);
+
+  /* ================= SUBJECT FILTER ================= */
+  useEffect(() => {
+    if (department && semester) {
+      fetchSubjectsByFilter(semester, department);
+    } else {
+      setSubjects([]);
+      setSubject("");
+    }
+  }, [department, semester]);
+
+  /* ================= FETCH ================= */
+  const fetchDepartments = async () => {
+    const res = await api.get("/departments");
+    setDepartments(res.data || []);
+  };
+
+  const fetchSubjectsByFilter = async (sem, dept) => {
+    const res = await api.get(
+      `/subjects/by-semester?semester=${sem}&department_id=${dept}`
+    );
+    setSubjects(res.data || []);
+  };
+
+  /* ================= FETCH STUDENTS ================= */
+  const fetchStudents = async () => {
+    if (!semester || !department || !section) {
+      return alert("Select semester, department & section");
+    }
+
+    try {
+      const res = await api.get(
+        `/students/filter-sem-section?semester=${semester}&section=${section}&department_id=${department}`
+      );
+
+      const sorted = res.data.sort(
+        (a, b) => a.roll_number - b.roll_number
+      );
+
+      setStudents(sorted);
+
+      const initial = {};
+      sorted.forEach((s) => {
+        initial[s.id] = "Present";
+      });
+
+      setAttendance(initial);
+
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  /* ================= EDIT LOAD ================= */
+  const loadExistingAttendance = async () => {
+    if (!subject || !date || !section) {
+      return alert("Select all filters");
+    }
+
+    try {
+      const res = await api.get(
+        `/attendance/edit?subject_id=${subject}&date=${date}&period=${wholeDay ? 1 : period}&section=${section}`
+      );
+
+      const existing = {};
+      res.data.forEach((d) => {
+        existing[d.student_id] = d.status;
+      });
+
+      setAttendance(existing);
+
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  /* ================= TOGGLE ================= */
+  const toggleStatus = (id) => {
+    setAttendance((prev) => ({
+      ...prev,
+      [id]: prev[id] === "Present" ? "Absent" : "Present",
+    }));
+  };
+
+  /* ================= BULK ================= */
+  const markAll = (status) => {
+    const updated = {};
+    students.forEach((s) => {
+      updated[s.id] = status;
+    });
+    setAttendance(updated);
+  };
+
+  /* ================= SAVE ================= */
+  const saveAttendance = async () => {
+    if (!subject || !date || !section) {
+      return alert("Fill all required fields");
+    }
+
+    if (!wholeDay && !period) {
+      return alert("Select period OR choose whole day");
+    }
+
+    const formatted = Object.keys(attendance).map((id) => ({
+      student_id: id,
+      status: attendance[id],
+    }));
+
+    try {
+      await api.post("/attendance", {
+        subject_id: subject,
+        date,
+        period: wholeDay ? null : period,
+        whole_day: wholeDay, // ✅ NEW
+        section,
+        attendance: formatted,
+      });
+
+      alert("✅ Attendance Saved Successfully");
+
+    } catch (err) {
+      console.error(err);
+      alert("Error saving attendance");
+    }
+  };
+
+  /* ================= UI ================= */
+  return (
+    <Layout>
+      <div className="attendance-page">
+
+        <h2 className="title">📋 Class Attendance</h2>
+
+        <div className="card filters">
+
+          <select value={department} onChange={(e) => setDepartment(e.target.value)}>
+            <option value="">Department</option>
+            {departments.map(d => (
+              <option key={d.id} value={d.id}>{d.name}</option>
+            ))}
+          </select>
+
+          <select value={semester} onChange={(e) => setSemester(e.target.value)}>
+            <option value="">Semester</option>
+            {[1,2,3,4,5,6,7,8].map(s => (
+              <option key={s} value={s}>Sem {s}</option>
+            ))}
+          </select>
+
+          <select value={section} onChange={(e) => setSection(e.target.value)}>
+            <option value="">Section</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+          </select>
+
+          <select value={subject} onChange={(e) => setSubject(e.target.value)}>
+            <option value="">Subject</option>
+            {subjects.map(s => (
+              <option key={s.id} value={s.id}>{s.name}</option>
+            ))}
+          </select>
+
+          {/* 🔥 PERIOD */}
+          <select
+            value={period}
+            onChange={(e) => setPeriod(e.target.value)}
+            disabled={wholeDay}
+          >
+            <option value="">Period</option>
+            {[1,2,3,4,5,6,7,8].map(p => (
+              <option key={p} value={p}>P{p}</option>
+            ))}
+          </select>
+
+          {/* 🔥 WHOLE DAY */}
+          <label className="whole-day">
+            <input
+              type="checkbox"
+              checked={wholeDay}
+              onChange={(e) => setWholeDay(e.target.checked)}
+            />
+            Whole Day
+          </label>
+
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+
+          <button className="btn primary" onClick={fetchStudents}>
+            Load
+          </button>
+
+          <button className="btn warning" onClick={loadExistingAttendance}>
+            Edit
+          </button>
+        </div>
+
+        {students.length > 0 && (
+          <div className="bulk-actions">
+            <button onClick={() => markAll("Present")} className="btn success">
+              All Present
+            </button>
+            <button onClick={() => markAll("Absent")} className="btn danger">
+              All Absent
+            </button>
+          </div>
+        )}
+
+        <div className="table-card">
+          <table className="attendance-table">
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {students.map((s, i) => (
+                <tr key={s.id}>
+                  <td>{i + 1}</td>
+                  <td>{s.roll_number}</td>
+                  <td>{s.name}</td>
+                  <td>
+                    <button
+                      className={
+                        attendance[s.id] === "Present"
+                          ? "status present"
+                          : "status absent"
+                      }
+                      onClick={() => toggleStatus(s.id)}
+                    >
+                      {attendance[s.id]}
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {students.length > 0 && (
+          <button className="btn save" onClick={saveAttendance}>
+            Save Attendance
+          </button>
+        )}
+
+      </div>
+    </Layout>
+  );
+}
+
+export default Attendance;
