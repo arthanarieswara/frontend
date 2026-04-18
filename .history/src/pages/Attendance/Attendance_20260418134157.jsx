@@ -36,9 +36,8 @@ function Attendance() {
       return alert("Select semester & department");
     }
 
-    // 🔥 CLEAR OLD DATA FIRST
-    setStudents([]);
-    setAllStudents([]);
+    const currentRequest = requestId + 1;
+    setRequestId(currentRequest);
 
     try {
       const finalSection = typeof secParam === "string" ? secParam : section;
@@ -54,6 +53,9 @@ function Attendance() {
       const res = await api.get(url);
 
       console.log("API RESPONSE:", res.data);
+
+      // 🚨 IGNORE OLD RESPONSES
+      if (currentRequest !== requestId + 1) return;
 
       const sorted = res.data.sort((a, b) => a.roll_number - b.roll_number);
 

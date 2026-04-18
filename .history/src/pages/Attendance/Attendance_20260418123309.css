@@ -120,9 +120,8 @@ select, input {
 }
 
 .badge.present {
-  background: #d6f0e4;
+  background: #d4f8e8;
   color: #28c76f;
-  font-weight: bold;
 }
 
 .badge.absent {

@@ -15,7 +15,7 @@ function Attendance() {
 
   const [attendance, setAttendance] = useState({});
   const [loading, setLoading] = useState(false);
-  const [requestId, setRequestId] = useState(0);
+
   /* ================= INIT ================= */
   useEffect(() => {
     fetchDepartments();
@@ -36,12 +36,9 @@ function Attendance() {
       return alert("Select semester & department");
     }
 
-    // 🔥 CLEAR OLD DATA FIRST
-    setStudents([]);
-    setAllStudents([]);
-
     try {
-      const finalSection = typeof secParam === "string" ? secParam : section;
+      const finalSection =
+        typeof secParam === "string" ? secParam : section;
 
       let url = `/students/filter?semester=${semester}&department_id=${department}`;
 
@@ -55,7 +52,9 @@ function Attendance() {
 
       console.log("API RESPONSE:", res.data);
 
-      const sorted = res.data.sort((a, b) => a.roll_number - b.roll_number);
+      const sorted = res.data.sort(
+        (a, b) => a.roll_number - b.roll_number
+      );
 
       setStudents(sorted);
       setAllStudents(sorted);
@@ -66,16 +65,18 @@ function Attendance() {
       });
 
       setAttendance(initial);
+
     } catch (err) {
-      console.error(err);
+      console.error("Fetch Error:", err);
     }
   };
+
   /* ================= SEARCH ================= */
   const handleSearch = (value) => {
     const filtered = allStudents.filter(
       (s) =>
         s.name.toLowerCase().includes(value.toLowerCase()) ||
-        s.roll_number.includes(value),
+        s.roll_number.includes(value)
     );
     setStudents(filtered);
   };
@@ -127,11 +128,14 @@ function Attendance() {
   return (
     <Layout>
       <div className="attendance-container">
+
         <h2 className="page-title">📊 Class Attendance</h2>
 
         {/* FILTER CARD */}
         <div className="filter-card">
+
           <div className="filter-row">
+
             {/* DEPARTMENT */}
             <select
               value={department}
@@ -143,9 +147,7 @@ function Attendance() {
             >
               <option value="">Department</option>
               {departments.map((d) => (
-                <option key={d.id} value={d.id}>
-                  {d.name}
-                </option>
+                <option key={d.id} value={d.id}>{d.name}</option>
               ))}
             </select>
 
@@ -159,10 +161,8 @@ function Attendance() {
               }}
             >
               <option value="">Semester</option>
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
-                <option key={s} value={s}>
-                  Sem {s}
-                </option>
+              {[1,2,3,4,5,6,7,8].map(s => (
+                <option key={s} value={s}>Sem {s}</option>
               ))}
             </select>
 
@@ -282,6 +282,7 @@ function Attendance() {
             {loading ? "Saving..." : "💾 Save Attendance"}
           </button>
         )}
+
       </div>
     </Layout>
   );

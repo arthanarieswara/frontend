@@ -36,10 +36,6 @@ function Attendance() {
       return alert("Select semester & department");
     }
 
-    // 🔥 CLEAR OLD DATA FIRST
-    setStudents([]);
-    setAllStudents([]);
-
     try {
       const finalSection = typeof secParam === "string" ? secParam : section;
 
@@ -67,9 +63,10 @@ function Attendance() {
 
       setAttendance(initial);
     } catch (err) {
-      console.error(err);
+      console.error("Fetch Error:", err);
     }
   };
+
   /* ================= SEARCH ================= */
   const handleSearch = (value) => {
     const filtered = allStudents.filter(

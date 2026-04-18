@@ -15,50 +15,40 @@ function Attendance() {
 
   const [attendance, setAttendance] = useState({});
   const [loading, setLoading] = useState(false);
-  const [requestId, setRequestId] = useState(0);
+
   /* ================= INIT ================= */
   useEffect(() => {
     fetchDepartments();
   }, []);
 
   const fetchDepartments = async () => {
-    try {
-      const res = await api.get("/departments");
-      setDepartments(res.data || []);
-    } catch (err) {
-      console.error(err);
-    }
+    const res = await api.get("/departments");
+    setDepartments(res.data || []);
   };
 
-  /* ================= FETCH STUDENTS (FINAL FIXED) ================= */
-  const fetchStudents = async (secParam) => {
+  /* ================= FETCH STUDENTS ================= */
+  const fetchStudents = async (sec = section) => {
     if (!semester || !department) {
       return alert("Select semester & department");
     }
 
-    // 🔥 CLEAR OLD DATA FIRST
-    setStudents([]);
-    setAllStudents([]);
-
     try {
-      const finalSection = typeof secParam === "string" ? secParam : section;
-
       let url = `/students/filter?semester=${semester}&department_id=${department}`;
 
-      if (finalSection && finalSection.trim() !== "") {
-        url += `&section=${finalSection}`;
+      if (sec && sec.trim() !== "") {
+        url += `&section=${sec}`;
       }
 
-      console.log("FINAL URL:", url);
+      console.log("Fetching:", url);
 
       const res = await api.get(url);
 
-      console.log("API RESPONSE:", res.data);
+      const sorted = res.data.sort(
+        (a, b) => a.roll_number - b.roll_number
+      );
 
-      const sorted = res.data.sort((a, b) => a.roll_number - b.roll_number);
-
-      setStudents(sorted);
-      setAllStudents(sorted);
+      setStudents([...sorted]);
+      setAllStudents([...sorted]); // 🔥 keep original
 
       const initial = {};
       sorted.forEach((s) => {
@@ -66,16 +56,18 @@ function Attendance() {
       });
 
       setAttendance(initial);
+
     } catch (err) {
       console.error(err);
     }
   };
+
   /* ================= SEARCH ================= */
   const handleSearch = (value) => {
     const filtered = allStudents.filter(
       (s) =>
         s.name.toLowerCase().includes(value.toLowerCase()) ||
-        s.roll_number.includes(value),
+        s.roll_number.includes(value)
     );
     setStudents(filtered);
   };
@@ -127,42 +119,37 @@ function Attendance() {
   return (
     <Layout>
       <div className="attendance-container">
+
         <h2 className="page-title">📊 Class Attendance</h2>
 
         {/* FILTER CARD */}
         <div className="filter-card">
+
           <div className="filter-row">
-            {/* DEPARTMENT */}
+
             <select
               value={department}
               onChange={(e) => {
                 setDepartment(e.target.value);
                 setSection("");
-                setStudents([]);
               }}
             >
               <option value="">Department</option>
               {departments.map((d) => (
-                <option key={d.id} value={d.id}>
-                  {d.name}
-                </option>
+                <option key={d.id} value={d.id}>{d.name}</option>
               ))}
             </select>
 
-            {/* SEMESTER */}
             <select
               value={semester}
               onChange={(e) => {
                 setSemester(e.target.value);
                 setSection("");
-                setStudents([]);
               }}
             >
               <option value="">Semester</option>
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
-                <option key={s} value={s}>
-                  Sem {s}
-                </option>
+              {[1,2,3,4,5,6,7,8].map(s => (
+                <option key={s} value={s}>Sem {s}</option>
               ))}
             </select>
 
@@ -199,18 +186,13 @@ function Attendance() {
               </button>
             </div>
 
-            {/* DATE */}
             <input
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />
 
-            {/* LOAD BUTTON (FIXED) */}
-            <button
-              className="btn primary"
-              onClick={() => fetchStudents(section)}
-            >
+            <button className="btn primary" onClick={fetchStudents}>
               Load
             </button>
           </div>
@@ -224,7 +206,7 @@ function Attendance() {
           />
         </div>
 
-        {/* BULK ACTIONS */}
+        {/* BULK */}
         {students.length > 0 && (
           <div className="bulk-bar">
             <button className="btn success" onClick={() => markAll("Present")}>
@@ -272,7 +254,7 @@ function Attendance() {
           </table>
         </div>
 
-        {/* SAVE BUTTON */}
+        {/* SAVE */}
         {students.length > 0 && (
           <button
             className="btn save"
@@ -282,6 +264,7 @@ function Attendance() {
             {loading ? "Saving..." : "💾 Save Attendance"}
           </button>
         )}
+
       </div>
     </Layout>
   );
